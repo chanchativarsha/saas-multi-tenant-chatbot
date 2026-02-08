@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tenants', '0003_client_industry_client_website'),
+        ('custom_tenants', '0003_client_industry_client_website'),
     ]
 
     operations = [
