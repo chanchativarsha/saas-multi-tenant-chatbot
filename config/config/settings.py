@@ -34,7 +34,7 @@ APP_DIRS: True
 SHARED_APPS = [
     'django_tenants',
     'corsheaders',
-    'config.tenants',
+    'config.tenants.apps.TenantsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +50,7 @@ SHARED_APPS = [
 
     'config.dashboard',
 ]
+
 
 
 TENANT_APPS = [
@@ -158,10 +159,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-TENANT_MODEL = "config.tenants.Client"
+TENANT_MODEL = "custom_tenants.Client"
 
 # This tells django-tenants which model to use for client domains
-TENANT_DOMAIN_MODEL = "config.tenants.Domain"
+TENANT_DOMAIN_MODEL = "custom_tenants.Domain"
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema',
