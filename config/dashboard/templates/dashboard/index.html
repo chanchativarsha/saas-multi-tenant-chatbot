@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Client Dashboard - Control Panel</title>
+
+    <link rel="stylesheet" href="{% static 'dashboard/tailwind.css' %}">
+
+    <!-- Razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <link rel="icon" href="{% static 'dashboard/favico.ico' %}" />
+
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
+
+  <body class="min-h-screen bg-gray-100 overflow-y-auto overflow-x-hidden">
+    <div id="app-container" class="min-h-screen flex flex-col">
+      <div id="app" class="flex-1"></div>
+    </div>
+  
+    <script src="{% static 'dashboard/main.js' %}" defer></script>
+  </body>
+
+</html>

@@ -1,0 +1,41 @@
+# Core framework
+Django==5.2.7
+asgiref==3.10.0
+sqlparse==0.5.3
+pytz==2025.2
+tzdata==2025.2
+
+# Multi-tenancy & API
+django-tenants==3.9.0
+djangorestframework==3.16.1
+django-cors-headers==4.9.0
+dj-rest-auth==7.0.1
+drf-spectacular==0.28.0
+inflection==0.5.1
+
+# Database & configuration for Render
+psycopg2-binary==2.9.11
+dj-database-url==2.1.0
+
+# Auth & security utilities
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+
+# Static files & production server
+whitenoise==6.7.0
+gunicorn==23.0.0
+
+# Chatbot / NLP stack (minimal for the shared engine)
+requests==2.32.5
+sentence-transformers==5.1.1
+transformers==4.57.1
+torch==2.9.0
+scikit-learn==1.7.2
+scipy==1.16.2
+numpy==2.3.4
+pandas==2.3.3
+tqdm==4.67.1
+regex==2025.10.23
+
+# Payments (Task 2 – enable when needed)
+razorpay==2.0.0
