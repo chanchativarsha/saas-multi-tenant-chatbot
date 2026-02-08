@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -34,31 +34,33 @@ APP_DIRS: True
 SHARED_APPS = [
     'django_tenants',
     'corsheaders',
-    'tenants',
-    
+    'config.tenants',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'rest_framework',
     'rest_framework.authtoken',
     'drf_spectacular',
     'dj_rest_auth',
-    
-    'dashboard',
+
+    'config.dashboard',
 ]
 
+
 TENANT_APPS = [
-    'chatbot',
+    'config.chatbot',
 ]
-INSTALLED_APPS = list(SHARED_APPS) + list(TENANT_APPS)
+
+INSTALLED_APPS = SHARED_APPS + TENANT_APPS
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'tenants.middleware.HeaderTenantMiddleware',
+    'config.tenants.middleware.HeaderTenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,13 +70,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'config.config.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -85,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.config.wsgi.application'
 
 
 # Database
@@ -97,8 +98,8 @@ DATABASES = {
         'NAME': 'chatter_platform',
         'USER': 'postgres',      
         'PASSWORD': 'Saas_tenant', 
-        'HOST': 'localhost',            
-        'PORT': '8000',                 
+        'HOST': '127.0.0.1',            
+        'PORT': '5432',                 
     }
 }
 
@@ -142,9 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 import os
-from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 STATIC_URL = '/static/'
 
@@ -159,10 +158,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-TENANT_MODEL = "tenants.Client"
+TENANT_MODEL = "config.tenants.Client"
 
 # This tells django-tenants which model to use for client domains
-TENANT_DOMAIN_MODEL = "tenants.Domain"
+TENANT_DOMAIN_MODEL = "config.tenants.Domain"
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema',
@@ -199,8 +198,8 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 REST_AUTH = {
-    'LOGIN_SERIALIZER': 'tenants.serializers.CustomLoginSerializer',
-    'TOKEN_SERIALIZER': 'tenants.serializers.CustomTokenSerializer',
+    'LOGIN_SERIALIZER': 'config.tenants.serializers.CustomLoginSerializer',
+    'TOKEN_SERIALIZER': 'config.tenants.serializers.CustomTokenSerializer',
 }
 
 
